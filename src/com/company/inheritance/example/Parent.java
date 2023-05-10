@@ -2,16 +2,17 @@ package com.company.inheritance.example;
 
 import java.util.*;
 
-public class Parent {
+public abstract class Parent {
 
     private static int nextId = 1;
-    private int id;
-    private String userName;
-    private String name;
-    private List<Dummy> myList;
-    private Set<Dummy> mySet;
+    protected int id;
+    protected String userName;
+    protected String name;
+    protected List<Dummy> myList;
+    protected Set<Dummy> mySet;
     private Map<Integer,Dummy> mapByDummyId;
     private Map<String, Dummy> mapByDummyUsername;
+
 
     public Parent(String userName, String name) {
         this.id = nextId++;
@@ -60,28 +61,41 @@ public class Parent {
         this.name = name;
     }
 
-    public void addObjectToMySet(String userName, String dummyAttribute, String anotherAttribute) {
-        Dummy dummyObject = new Dummy(userName, dummyAttribute, anotherAttribute);
+    public void addObjectToMySet(String userName,
+                                 String dummyAttribute,
+                                 String anotherAttribute) {
+        Dummy dummyObject = new Dummy(userName,
+                dummyAttribute,
+                anotherAttribute);
 
         mySet.add(dummyObject);
 
     }
 
-    public void addObjectToMyList(String userName, String dummyAttribute, String anotherAttribute) {
-        Dummy dummyObject = new Dummy(userName, dummyAttribute, anotherAttribute);
+    public void addObjectToMyList(String userName,
+                                  String dummyAttribute,
+                                  String anotherAttribute) {
+        Dummy dummyObject = new Dummy(userName,
+                dummyAttribute,
+                anotherAttribute);
 
         myList.add(dummyObject);
 
     }
 
-    public void addObjectToMyMaps(String userName, String dummyAttribute, String anotherAttribute) {
+    public void addObjectToMyMaps(String userName,
+                                  String dummyAttribute,
+                                  String anotherAttribute) {
 
-        boolean userNameAlreadyExists = mapByDummyUsername.containsKey(userName);
+        boolean userNameAlreadyExists =
+                mapByDummyUsername.containsKey(userName);
         if (userNameAlreadyExists) {
             throw new IllegalArgumentException("Username is already in use in Dummy's map");
         }
 
-        Dummy dummyObject = new Dummy(userName, dummyAttribute, anotherAttribute);
+        Dummy dummyObject = new Dummy(userName,
+                dummyAttribute,
+                anotherAttribute);
 
         mapByDummyId.put(dummyObject.getId(), dummyObject);
         mapByDummyUsername.put(dummyObject.getUserName(), dummyObject );
@@ -90,7 +104,8 @@ public class Parent {
 
     public List<Dummy> getListOfValuesFromMapById() {
 
-        List<Dummy> dummiesList = mapByDummyId.values().stream().toList();
+        List<Dummy> dummiesList =
+                mapByDummyId.values().stream().toList();
 
         List<Dummy> anotherDummyList = new ArrayList<>();
         for (Integer id : mapByDummyId.keySet()) {
@@ -138,9 +153,7 @@ public class Parent {
         return "I am ";
     }
 
-    public String callingFrom() {
-        return this.firstString() + "Parent Class";
-    }
+    public abstract String callingFrom();
 
 
 }

@@ -5,14 +5,6 @@ public class Dummy {
     private static int nextId = 1;
     private int id;
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     private String userName;
     private String dummyAttribute;
     private String anotherAttribute;
@@ -24,6 +16,13 @@ public class Dummy {
         this.anotherAttribute = anotherAttribute;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public int getId() {
         return id;
     }

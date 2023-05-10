@@ -10,13 +10,14 @@ public class InheritanceMainExample {
 
         ChildClass1 child1 = new ChildClass1("userName","Name");
 
-        List<Parent> parents = new ArrayList<>();
+        List<Parent> parents =
+                new ArrayList<>();
 
         parents.add(child1);
 
-        Parent parent1 = new Parent("userName1", "name");
+        //Parent parent1 = new Parent("userName1", "name");
 
-        parents.add(parent1);
+       // parents.add(parent1);
 
         Parent child2 = new ChildClass2("userName","Name");
 
@@ -26,6 +27,18 @@ public class InheritanceMainExample {
                 System.out.println(p.callingFrom())
         );
 
+        for (Parent p : parents) {
+
+            if (p instanceof ChildClass1) {
+
+                ((ChildClass1) p).myMethod();
+                System.out.println(p);
+            }
+            if (p instanceof  ChildClass2) {
+
+            }
+
+        }
         
 
     }

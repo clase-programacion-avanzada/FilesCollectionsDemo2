@@ -12,4 +12,8 @@ public class ChildClass2 extends Parent {
 
         return this.firstString() + "ChildClass2";
     }
+
+    public void myMethod2(){
+
+    }
 }

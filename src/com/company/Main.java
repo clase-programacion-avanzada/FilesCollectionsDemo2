@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.model.Content;
-import com.company.model.Podcast;
-import com.company.model.Producer;
-import com.company.model.Song;
+import com.company.model.*;
 import com.company.utils.FileHandler;
 
 import java.io.IOException;
@@ -22,6 +19,15 @@ public class Main {
 
         //But we can create an instance of a List
         // of a concrete class
+        Playable playable = new Song("",
+                "",
+                "",
+                200,
+                2023,
+                "");
+
+        playable.play();
+
         List<Content> contentDb = new ArrayList<Content>();
         try{
             contentDb  = FileHandler.readFileSongs("src/com/company/resources/Songs.csv");
