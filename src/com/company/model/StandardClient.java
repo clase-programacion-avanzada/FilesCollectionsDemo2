@@ -13,6 +13,7 @@ public class StandardClient extends Client {
 
     @Override
     public boolean addContentToPlayList(Content content, Long playListId) {
+
         if (content instanceof Song) {
             this.playlist.addContent(content);
             return true;

@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.model.*;
+import com.company.service.ContentService;
+import com.company.service.UserService;
 import com.company.utils.FileHandler;
 
 import java.io.IOException;
@@ -8,6 +10,8 @@ import java.util.*;
 
 public class Main {
 
+    private static UserService userService = new UserService();
+    private static ContentService contentService = new ContentService();
     public static void main(String[] args) throws IOException {
 
 
@@ -93,7 +97,32 @@ public class Main {
             }
 
         }
+        try{
+            //Quieres agregar una pelicula o una serie?
 
+            //Mostrar en pantalla las peliculas y/o series.
+
+
+            ImprimirCanciones();
+
+
+            Content content = contentService.buscarPeliculaPorTitulo("Titulo");
+            //Ususario me dice qué película va a descargar.
+            //Me dicen el correo del user
+            userService.addSongToPlaylist(content, 1L);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    private static void ImprimirCanciones() {
+        for (int i= 0 ; i < contentService.getSongList().size() ; i++) {
+
+            System.out.println(i + " " + contentService.getSongList().get(i));
+        }
     }
 
     public static void addNewSongToDb(List<Content> contentDb, Map<Long,Producer> producersDb){
